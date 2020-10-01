@@ -2,7 +2,7 @@ import dota_utils as util
 import os
 import cv2
 import json
-# from PIL import Image
+from PIL import Image
 
 import sys
 import codecs
@@ -12,6 +12,14 @@ import math
 import shapely.geometry as shgeo
 
 wordname_5 = ['1', '2', '3', '3', '4', '5']
+
+
+def parse_aerial_poly2(filename):
+    objects = parse_aerial_poly(filename)
+    for obj in objects:
+        obj['poly'] = util.TuplePoly2Poly(obj['poly'])
+        obj['poly'] = list(map(int, obj['poly']))
+    return objects
 
 def Aerial2COCOTrain(srcpath, destfile, cls_names):
 
@@ -50,7 +58,6 @@ def Aerial2COCOTrain(srcpath, destfile, cls_names):
             # annotations
             objects = parse_aerial_poly2(file)
             for obj in objects:
-                
                 single_obj = {}
                 single_obj['area'] = obj['area']
                 single_obj['category_id'] = cls_names.index(obj['name']) + 1
@@ -67,9 +74,10 @@ def Aerial2COCOTrain(srcpath, destfile, cls_names):
                 single_obj['id'] = inst_count
                 inst_count = inst_count + 1
             image_id = image_id + 1
-        json.dump(data_dict, f_out)
+        json.dump(data_dict, f_out, indent=2)
 
 def Aerial2COCOTest(srcpath, destfile, cls_names):
+
     imageparent = os.path.join(srcpath, 'images')
     data_dict = {}
 
@@ -97,7 +105,7 @@ def Aerial2COCOTest(srcpath, destfile, cls_names):
             data_dict['images'].append(single_image)
 
             image_id = image_id + 1
-        json.dump(data_dict, f_out)
+        json.dump(data_dict, f_out, indent=2)
 
 
 def parse_aerial_poly(filename):
@@ -140,16 +148,8 @@ def parse_aerial_poly(filename):
             break
     return objects
 
-    def parse_aerial_poly2(filename):
 
-        objects = parse_aerial_poly(filename)
-        for obj in objects:
-            obj['poly'] = util.TuplePoly2Poly(obj['poly'])
-            obj['poly'] = list(map(int, obj['poly']))
-        return objects
 
 if __name__ == "__main__":
-    Aerial2COCOTrain(r'D:\GitHub\Datasets\mydata', r'D:\GitHub\Datasets\mydata\Aerial_train', wordname_5)
-    # Aerial2COCOTest(r'', r'', wordname_5)
-
-        
+    Aerial2COCOTrain(r'D:\GitHub\Datasets\mydata', r'D:\GitHub\Datasets\mydata\Aerial_train.json', wordname_5)
+    Aerial2COCOTest(r'D:\GitHub\Datasets\mydata', r'D:\GitHub\Datasets\mydata\Aerial_test.json', wordname_5)

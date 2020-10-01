@@ -96,8 +96,8 @@ def prepare(srcpath, dstpath):
     Aerial2COCOTrain(os.path.join(dstpath, 'trainval1024'), os.path.join(dstpath, 'trainval1024', 'Aerial_trainval1024.json'), wordname_5)
     Aerial2COCOTest(os.path.join(dstpath, 'test1024'), os.path.join(dstpath, 'test1024', 'Aerial_test1024.json'), wordname_5)
 
-    if __name__ == '__main__':
-    args = parse_args()
-    srcpath = args.srcpath
-    dstpath = args.dstpath
-    prepare(srcpath, dstpath)
+    # if __name__ == '__main__':
+    # # args = parse_args()
+    # # srcpath = args.srcpath
+    # # dstpath = args.dstpath
+    # # prepare(srcpath, dstpath)
