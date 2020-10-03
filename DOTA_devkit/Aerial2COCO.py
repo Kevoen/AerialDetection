@@ -151,5 +151,5 @@ def parse_aerial_poly(filename):
 
 
 if __name__ == "__main__":
-    Aerial2COCOTrain(r'D:\GitHub\Datasets\mydata', r'D:\GitHub\Datasets\mydata\Aerial_train.json', wordname_5)
-    Aerial2COCOTest(r'D:\GitHub\Datasets\mydata', r'D:\GitHub\Datasets\mydata\Aerial_test.json', wordname_5)
+    Aerial2COCOTrain(r'/hk/Aerial_dataset', r'/hk/Aerial_dataset/Aerial_train.json', wordname_5)
+    # Aerial2COCOTest(r'D:\GitHub\Datasets\mydata', r'D:\GitHub\Datasets\mydata\Aerial_test.json', wordname_5)
