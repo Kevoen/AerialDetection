@@ -37,7 +37,7 @@ model = dict(
         in_channels=256,
         fc_out_channels=1024,
         roi_feat_size=7,
-        num_classes=6,                      #class
+        num_classes=7,                      #class
         target_means=[0., 0., 0., 0.],
         target_stds=[0.1, 0.1, 0.2, 0.2],
         reg_class_agnostic=False,
@@ -149,7 +149,7 @@ lr_config = dict(
     warmup_iters=500,
     warmup_ratio=1.0 / 3,
     step=[8, 11])
-checkpoint_config = dict(interval=1)
+checkpoint_config = dict(interval=6)
 # yapf:disable
 log_config = dict(
     interval=50,
