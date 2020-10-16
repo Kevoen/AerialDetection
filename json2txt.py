@@ -30,4 +30,5 @@ def json2txt(path_json,path_save_txt):
             fw.write('\n')
 
 if __name__ == "__main__":
-    json2txt('C:/Users/HUANG/Downloads/results.pkl.json','C:/Users/HUANG/Downloads/results.txt')
+    # json2txt('C:/Users/HUANG/Downloads/results.pkl.json','C:/Users/HUANG/Downloads/results.txt')
+    json2txt('/AerialDetection/work_dirs/faster_rcnn_r50_fpn_1x_aerial/results.pkl.json','/AerialDetection/work_dirs/faster_rcnn_r50_fpn_1x_aerial/results.txt')
