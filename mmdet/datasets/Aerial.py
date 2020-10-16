@@ -2,11 +2,11 @@ from .coco import CocoDataset
 
 class AerialDataset(CocoDataset):
 
-    CLASSES = ('1', '2', '3', '4', '5')
+    CLASSES = ('1', '2', '3', '4', '5', '6')
 
 class AerialDataset_v3(CocoDataset):
 
-    CLASSES = ('1', '2', '3', '4', '5')
+    CLASSES = ('1', '2', '3', '4', '5', '6')
 
     def _parse_ann_info(self, ann_info, with_mask=True):
         """Parse bbox and mask annotation.
