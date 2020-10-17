@@ -11,7 +11,7 @@ import re
 import math
 import shapely.geometry as shgeo
 
-wordname_5 = ['1', '2', '3', '3', '4', '5']
+wordname_6 = ['1', '2', '3', '3', '4', '5','6']
 
 
 def parse_aerial_poly2(filename):
@@ -151,5 +151,5 @@ def parse_aerial_poly(filename):
 
 
 if __name__ == "__main__":
-    Aerial2COCOTrain(r'/hk/Aerial_dataset', r'/hk/Aerial_dataset/Aerial_train.json', wordname_5)
-    # Aerial2COCOTest(r'D:\GitHub\Datasets\mydata', r'D:\GitHub\Datasets\mydata\Aerial_test.json', wordname_5)
+    Aerial2COCOTrain(r'/hk/Aerial_step1_datasets/train', r'/hk/Aerial_step1_datasets/train/Aerial_step1_dataset.json', wordname_6)
+    Aerial2COCOTest(r'/hk/Aerial_step1_datasets/test', r'/hk/Aerial_step1_datasets/test/Aerial_step1_dataset.json', wordname_6)
