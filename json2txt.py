@@ -14,20 +14,39 @@ def json2txt(path_json,path_save_txt):
             bboxs = obj['bbox']
             score = obj['score']
             clas = obj['category_id']
+            x1 = int(bboxs[0])
+            y1 = int(bboxs[1])
+            x2 = int(bboxs[2])
+            y2 = int(bboxs[3])
+            h = abs(y1 - y2)
+            w = abs(x1 - x2)
+            x3 = x1 + w
+            y3 = y1
+            x4 = x1
+            y4 = y1 + h
             fw.write(str(image_id)+'.tif')
             fw.write(' ')
             fw.write(str(clas))
             fw.write(' ')
             fw.write(str(score).split(".")[0] + "." + str(score).split(".")[1][:2])
             fw.write(' ')
-            fw.write(str(int(bboxs[0])))
+            fw.write(str(x1))
             fw.write(' ')
-            fw.write(str(int(bboxs[1])))
+            fw.write(str(y1))
             fw.write(' ')
-            fw.write(str(int(bboxs[2])))
+            fw.write(str(x2))
             fw.write(' ')
-            fw.write(str(int(bboxs[3])))
+            fw.write(str(y2))
+            fw.write(' ')
+            fw.write(str(x3))
+            fw.write(' ')
+            fw.write(str(y3))
+            fw.write(' ')
+            fw.write(str(x4))
+            fw.write(' ')
+            fw.write(str(y4))
             fw.write('\n')
 
 if __name__ == "__main__":
-    json2txt('/AerialDetection/work_dirs/faster_rcnn_r50_fpn_1x_aerial/results.pkl.json','/AerialDetection/work_dirs/faster_rcnn_r50_fpn_1x_aerial/results.txt')
+    json2txt('C:/Users/HUANG/Downloads/results.pkl (1).json','C:/Users/HUANG/Downloads/results.txt')
+    # json2txt('/AerialDetection/work_dirs/faster_rcnn_r50_fpn_1x_aerial/results.pkl.json','/AerialDetection/work_dirs/faster_rcnn_r50_fpn_1x_aerial/results.txt')
