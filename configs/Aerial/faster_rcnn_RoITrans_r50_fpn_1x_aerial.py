@@ -37,7 +37,7 @@ model = dict(
         in_channels=256,
         fc_out_channels=1024,
         roi_feat_size=7,
-        num_classes=5,
+        num_classes=7,
         target_means=[0., 0., 0., 0., 0.],
         target_stds=[0.1, 0.1, 0.2, 0.2, 0.1],
         reg_class_agnostic=True,
@@ -56,7 +56,7 @@ model = dict(
         in_channels=256,
         fc_out_channels=1024,
         roi_feat_size=7,
-        num_classes=5,
+        num_classes=7,
         target_means=[0., 0., 0., 0., 0.],
         target_stds=[0.05, 0.05, 0.1, 0.1, 0.05],
         reg_class_agnostic=False,
@@ -145,7 +145,7 @@ data_root = '../hk/Aerial_dataset/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 data = dict(
-    imgs_per_gpu=2,
+    imgs_per_gpu=1,
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
@@ -183,7 +183,7 @@ data = dict(
         with_label=False,
         test_mode=True))
 # optimizer
-optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.02/8, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 # learning policy
 lr_config = dict(
@@ -192,12 +192,7 @@ lr_config = dict(
     warmup_iters=500,
     warmup_ratio=1.0 / 3,
     step=[8, 11])
-<<<<<<< Updated upstream
-checkpoint_config = dict(interval=12)
-=======
 checkpoint_config = dict(interval=6)
-
->>>>>>> Stashed changes
 # yapf:disable
 log_config = dict(
     interval=50,
