@@ -3,26 +3,28 @@ import numpy as np
 
 class DOTADataset(CocoDataset):
 
-    CLASSES = ('plane', 'baseball-diamond',
-                'bridge', 'ground-track-field',
-                'small-vehicle', 'large-vehicle',
-                'ship', 'tennis-court',
-                'basketball-court', 'storage-tank',
-                'soccer-ball-field', 'roundabout',
-                'harbor', 'swimming-pool',
-                'helicopter')
+    # CLASSES = ('plane', 'baseball-diamond',
+    #             'bridge', 'ground-track-field',
+    #             'small-vehicle', 'large-vehicle',
+    #             'ship', 'tennis-court',
+    #             'basketball-court', 'storage-tank',
+    #             'soccer-ball-field', 'roundabout',
+    #             'harbor', 'swimming-pool',
+    #             'helicopter')
+    CLASSES = ('1', '2', '3', '4', '5', '6')
 
 
 class DOTADataset_v3(CocoDataset):
 
-    CLASSES = ('plane', 'baseball-diamond',
-                'bridge', 'ground-track-field',
-                'small-vehicle', 'large-vehicle',
-                'ship', 'tennis-court',
-                'basketball-court', 'storage-tank',
-                'soccer-ball-field', 'roundabout',
-                'harbor', 'swimming-pool',
-                'helicopter')
+    # CLASSES = ('plane', 'baseball-diamond',
+    #             'bridge', 'ground-track-field',
+    #             'small-vehicle', 'large-vehicle',
+    #             'ship', 'tennis-court',
+    #             'basketball-court', 'storage-tank',
+    #             'soccer-ball-field', 'roundabout',
+    #             'harbor', 'swimming-pool',
+    #             'helicopter')
+    CLASSES = ('1', '2', '3', '4', '5', '6')
 
     def _parse_ann_info(self, ann_info, with_mask=True):
         """Parse bbox and mask annotation.
