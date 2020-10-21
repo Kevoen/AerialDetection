@@ -121,7 +121,7 @@ class DetectorModel():
         for file in os.listdir(src_img_path):
             img_path = os.path.join(src_img_path, file)
             detections = self.inference_single(img_path, slide_size, chip_size)
-            img = mmcv.imread(file)
+            img = mmcv.imread(img_path)
             for j, name in enumerate(class_names):
                 try:
                     dets = detections[j]
@@ -157,6 +157,7 @@ class DetectorModel():
                     txt.write(' ')
                     txt.write('\n')
 
+                    print("label wrote: ", file)
 
                     color = (random.randint(0, 256), random.randint(0, 256), random.randint(0, 256))
                     cv2.circle(img, (bbox[0], bbox[1]), 3, (0, 0, 255), -1)
@@ -167,6 +168,7 @@ class DetectorModel():
                     cv2.putText(img, '%s %.3f' % (class_names[j], score), (bbox[0], bbox[1] + 10),
                                 color=color_white, fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5)
             cv2.imwrite(os.path.join(imgpath, file), img)
+            print("images wrote: ", os.path.join(imgpath, file))
 
 if __name__ == '__main__':
     # roitransformer = DetectorModel(r'configs/Aerial/faster_rcnn_RoITrans_r50_fpn_1x_dota.py',
@@ -178,5 +180,5 @@ if __name__ == '__main__':
     #                                    r'1_out.tif',
     #                                     (512, 512),
     #                                    (1024, 1024))
-    roitransformer.inference_multiple_vis(r'/hk/Aerial_step1_datasets/test/images', r'./', (512, 512), (1024, 1024))
+    roitransformer.inference_multiple_vis(r'/hk/Aerial_step1_datasets/test/images', r'./', r'./output',(512, 512), (1024, 1024))
 
