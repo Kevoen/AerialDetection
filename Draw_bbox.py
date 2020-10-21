@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import cv2 as cv
 
-image_path = 'D:/迅雷下载/Aerial_step1_datasets/test/images/1.tif'
+image_path = 'D:/迅雷下载/Aerial_step1_datasets/test/images/60.tif'
 # image_path = 'D:/迅雷下载/Aerial_step1_datasets/train/images/1.tif'
 image = Image.open(image_path)
 #创建一个可以在给定图像上绘图的对象
@@ -16,8 +16,8 @@ draw = ImageDraw.Draw(image)
 # draw.rectangle([634,114,106,30], outline=(255,0,0))
 # draw.rectangle([457,93,140,42], outline=(255,0,0))
 # draw.polygon([789, 300, 183, 372, 1395, 300, 789, 372], outline=(255,0,0))
-draw.polygon([891, 132, 889, 156, 787, 149, 789, 125], outline=(255,0,0))
-draw.polygon([737, 121, 735, 146, 632, 138, 634, 113], outline=(255,0,0))
-draw.polygon([891, 132, 889, 156, 787, 149, 789, 125], outline=(255,0,0))
-draw.polygon([600, 104, 597, 136, 508, 128, 510, 96], outline=(255,0,0))
+
+draw.polygon([945, 220, 933, 193, 1018, 156, 1030, 183 ], outline=(255,0,0))
+# draw.polygon([893, 133, 891, 156, 784, 149, 786, 126 ], outline=(255,0,0))
+# draw.polygon([600, 106, 598, 135, 442, 126, 443, 97 ], outline=(255,0,0))
 image.show()
