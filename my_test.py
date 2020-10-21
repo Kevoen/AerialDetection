@@ -107,11 +107,13 @@ class DetectorModel():
         img = draw_poly_detections(srcpath, detections, self.classnames, scale=1, threshold=0.3)
         cv2.imwrite(dstpath, img)
 
-    def inference_multiple_vis(self, srcpath, dstpath, slide_size, chip_size):
+    def inference_multiple_vis(self, srcpath, dstpath, imgpath, slide_size, chip_size):
         import pdb
+        import random
         scale = 1
         threshold = 0.3
         class_names = self.classnames
+        color_white = (255, 255, 255)
         assert isinstance(class_names, (tuple, list))
         src_img_path = srcpath
         text_path = dstpath + '科目四_NCHU_ODT01.txt'
@@ -119,7 +121,7 @@ class DetectorModel():
         for file in os.listdir(src_img_path):
             img_path = os.path.join(src_img_path, file)
             detections = self.inference_single(img_path, slide_size, chip_size)
-
+            img = mmcv.imread(file)
             for j, name in enumerate(class_names):
                 try:
                     dets = detections[j]
@@ -154,6 +156,17 @@ class DetectorModel():
                     txt.write(str(int(bbox[7])))
                     txt.write(' ')
                     txt.write('\n')
+
+
+                    color = (random.randint(0, 256), random.randint(0, 256), random.randint(0, 256))
+                    cv2.circle(img, (bbox[0], bbox[1]), 3, (0, 0, 255), -1)
+                    for i in range(3):
+                        cv2.line(img, (bbox[i * 2], bbox[i * 2 + 1]), (bbox[(i + 1) * 2], bbox[(i + 1) * 2 + 1]),
+                                 color=color, thickness=2)
+                    cv2.line(img, (bbox[6], bbox[7]), (bbox[0], bbox[1]), color=color, thickness=2)
+                    cv2.putText(img, '%s %.3f' % (class_names[j], score), (bbox[0], bbox[1] + 10),
+                                color=color_white, fontFace=cv2.FONT_HERSHEY_COMPLEX, fontScale=0.5)
+            cv2.imwrite(os.path.join(imgpath, file), img)
 
 if __name__ == '__main__':
     # roitransformer = DetectorModel(r'configs/Aerial/faster_rcnn_RoITrans_r50_fpn_1x_dota.py',
