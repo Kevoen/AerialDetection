@@ -114,7 +114,7 @@ class DetectorModel():
         class_names = self.classnames
         assert isinstance(class_names, (tuple, list))
         src_img_path = srcpath
-        text_path = dstpath + 'NCHU_ODT01.txt'
+        text_path = dstpath + '科目四_NCHU_ODT01.txt'
         txt = open(text_path, 'w')
         for file in os.listdir(src_img_path):
             img_path = os.path.join(src_img_path, file)
