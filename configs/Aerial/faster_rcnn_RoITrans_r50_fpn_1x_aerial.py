@@ -128,7 +128,7 @@ test_cfg = dict(
         nms_pre=2000,
         nms_post=2000,
         max_num=2000,
-        nms_thr=0.7,
+        nms_thr=0.8,
         min_bbox_size=0),
     rcnn=dict(
         # score_thr=0.05, nms=dict(type='py_cpu_nms_poly_fast', iou_thr=0.1), max_per_img=1000)
