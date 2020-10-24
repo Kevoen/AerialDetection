@@ -1,4 +1,5 @@
 # model settings
+norm_cfg = dict(type='BN', requires_grad=True)
 model = dict(
     type='RoITransformer',
     pretrained='modelzoo://resnet50',
@@ -12,6 +13,8 @@ model = dict(
     neck=dict(
         type='NASFPN',
         in_channels=[256, 512, 1024, 2048],
+        stack_items=7,
+        norm_cfg=norm_cfg,
         out_channels=256,
         num_outs=5),
     rpn_head=dict(
@@ -25,7 +28,7 @@ model = dict(
         target_stds=[1.0, 1.0, 1.0, 1.0],
         loss_cls=dict(
             type='FocalLoss', use_sigmoid=True, loss_weight=1.0),
-        loss_bbox=dict(type='GIoULoss',reduction='mean', loss_weight=1.0),
+        loss_bbox=dict(type='DIoULoss',reduction='mean', loss_weight=1.0)),
         # loss_bbox=dict(type='SmoothL1Loss', beta=1.0 / 9.0, loss_weight=1.0)),
     bbox_roi_extractor=dict(
         type='SingleRoIExtractor',
@@ -193,7 +196,7 @@ lr_config = dict(
     warmup_iters=500,
     warmup_ratio=1.0 / 3,
     step=[8, 11])
-checkpoint_config = dict(interval=6)
+checkpoint_config = dict(interval=10)
 # yapf:disable
 log_config = dict(
     interval=50,
@@ -203,7 +206,7 @@ log_config = dict(
     ])
 # yapf:enable
 # runtime settings
-total_epochs = 12
+total_epochs = 100
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
 work_dir = './work_dirs/faster_rcnn_RoITrans_r101_nasfpn_1x_aerial'
