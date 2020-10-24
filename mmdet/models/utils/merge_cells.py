@@ -65,7 +65,7 @@ class BaseMergeCell(nn.Module):
                 out_channels,
                 **out_conv_cfg,
                 norm_cfg=out_norm_cfg,
-                order=out_conv_order)
+                )
 
         self.input1_conv = self._build_input_conv(
             out_channels, input_conv_cfg,
