@@ -1,11 +1,11 @@
 import torch.nn as nn
-from mmcv.cnn import ConvModule, caffe2_xavier_init
-from mmcv.ops.merge_cells import GlobalPoolingCell, SumCell
+from mmcv.cnn import caffe2_xavier_init
 
-from ..builder import NECKS
+from ..builder import
+from ..utils import ConvModule, GlobalPoolingCell, SumCell
 
 
-@NECKS.register_module()
+@NECKS.register_module
 class NASFPN(nn.Module):
     """NAS-FPN.
     Implementation of `NAS-FPN: Learning Scalable Feature Pyramid Architecture
