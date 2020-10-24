@@ -18,7 +18,7 @@ pip install mmcv==0.4.3
 echo "install pillow < 7"
 pip install "pillow<7"
 
-echo "build the project >>>>>>>>>>>>>>"
+echo ">>>>>>>>>>>>>>>>>>build the project >>>>>>>>>>>>>>"
 cd ../AerialDetection
 
 chmod 775 ./compile.sh
@@ -35,5 +35,8 @@ python setup.py build_ext --inplace
 echo "the curral path :"
 pwd
 
-echo ">>>>>>>successfully!>>>>>>>>"
+/opt/bin/nvidia-smi
+
+
+echo ">>>>>>>>>>>>>>>>>>>>>>>successfully!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
