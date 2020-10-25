@@ -13,7 +13,7 @@ model = dict(
     neck=dict(
         type='NASFPN',
         in_channels=[256, 512, 1024, 2048],
-        stack_items=7,
+        stack_times=7,
         norm_cfg=norm_cfg,
         out_channels=256,
         num_outs=5),
@@ -149,7 +149,7 @@ data_root = '../hk/Aerial_step1_datasets/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 data = dict(
-    imgs_per_gpu=1,
+    imgs_per_gpu=2,
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
@@ -196,10 +196,10 @@ lr_config = dict(
     warmup_iters=500,
     warmup_ratio=1.0 / 3,
     step=[8, 11])
-checkpoint_config = dict(interval=10)
+checkpoint_config = dict(interval=5)
 # yapf:disable
 log_config = dict(
-    interval=50,
+    interval=5,
     hooks=[
         dict(type='TextLoggerHook'),
         dict(type='TensorboardLoggerHook')
