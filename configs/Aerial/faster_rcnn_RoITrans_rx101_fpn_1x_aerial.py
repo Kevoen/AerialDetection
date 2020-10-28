@@ -1,7 +1,7 @@
 # model settings
 model = dict(
     type='RoITransformer',
-    pretrained='modelzoo://resnet50',
+    pretrained='open-mmlab://resnext101_64x4d',
     backbone=dict(
         type='ResNeXt',
         depth=101,
@@ -206,7 +206,7 @@ log_config = dict(
 total_epochs = 100
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = './work_dirs/faster_rcnn_RoITrans_r101_nasfpn_1x_aerial'
+work_dir = './work_dirs/faster_rcnn_RoITrans_rx101_fpn_1x_aerial'
 load_from = None
 resume_from = None
 workflow = [('train', 1)]
