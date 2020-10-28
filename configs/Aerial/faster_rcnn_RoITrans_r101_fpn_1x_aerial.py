@@ -1,7 +1,7 @@
 # model settings
 model = dict(
     type='RoITransformer',
-    pretrained='modelzoo://resnet50',
+    pretrained='modelzoo://resnet101',
     backbone=dict(
         type='ResNet',
         depth=101,
